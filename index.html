@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today's Wins</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title-wrapper">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="trophy-icon">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+            <path d="M4 22h16"></path>
+            <path
+              d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+            <path
+              d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+          </svg>
+          <h1>Today's Wins</h1>
+        </div>
+        <p class="subtitle">
+          Celebrate your accomplishments, no matter how small!
+        </p>
+      </header>
+
+      <div class="stats-container">
+        <div class="stats-card">
+          <div class="stats-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stats-icon">
+              <path d="M12 20v-6"></path>
+              <path d="M6 20v-6"></path>
+              <path d="M18 20v-6"></path>
+              <path d="M12 14v-4"></path>
+              <path d="M6 14v-8"></path>
+              <path d="M18 14v-2"></path>
+              <path d="M2 20h20"></path>
+            </svg>
+            <h2>Your Progress</h2>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value totalWins">0</span>
+              <span class="stat-label">Total Wins</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value todaysWins">0</span>
+              <span class="stat-label">Today's Wins</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="add-win-form">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            class="input"
+            placeholder="What did you accomplish today?"
+            required />
+          <button type="submit" class="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 5v14"></path>
+              <path d="M5 12h14"></path>
+            </svg>
+            <span>Add Win</span>
+          </button>
+        </div>
+      </form>
+
+      <button class="delete-all">
+        <i class="ri-delete-bin-5-fill"></i> Delete All
+      </button>
+
+      <div class="wins-grid"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
