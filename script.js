@@ -37,6 +37,7 @@ function addWinsToArr(winText) {
     title: winText,
     createdAt: new Date().toLocaleString(),
     edited: false,
+    editDate: null,
   };
 
   winsArr.push(win);
@@ -84,12 +85,14 @@ function addWinsToPage(arr) {
       editWin(win.id, win.title);
     });
 
+    let editedTag = document.createElement("p");
     if (win.edited) {
-      let editedTag = document.createElement("p");
       editedTag.className = "editTag";
       editedTag.textContent = "Edited";
       winCard.appendChild(editedTag);
+      win.editDate = new Date().toLocaleString();
     }
+    editedTag.setAttribute("title", win.editDate);
   });
 }
 
@@ -185,37 +188,24 @@ function getStatistics() {
 
 let deleteAllBtn = document.querySelector(".delete-all");
 
-if (winsArr.length === 0) {
-  deleteAllBtn.style.display = "none";
-} else {
-  deleteAllBtn.style.display = "flex";
-}
-
 function deleteAll() {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      winsArr.length = 0;
-      localStorage.removeItem("wins");
-      addWinsToPage(winsArr);
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your data has been deleted.",
-        icon: "success",
-      });
-    }
-  });
+  if (winsArr.length === 0) {
+    Swal.fire({
+      title: "There's No Wins Yet!",
+      icon: "error",
+    });
+  } else {
+    winsArr.length = 0;
+    localStorage.removeItem("wins");
+    getStatistics();
+    addWinsToPage(winsArr);
+    setDataToLS();
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success",
+    });
+  }
 }
 
-deleteAllBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  deleteAll();
-});
+deleteAllBtn.addEventListener("click", deleteAll);
